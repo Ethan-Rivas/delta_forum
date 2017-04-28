@@ -34,6 +34,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Users management
 gem 'devise'
+# ActiveAdmin panel
+gem 'activeadmin'
+# Fix weird windows issue
+gem 'bcrypt', platforms: :ruby
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
