@@ -1,0 +1,28 @@
+forum.controller('newPostCtrl', ['$scope', '$http', 'Auth', '$location', function($scope, $http, Auth, $location){
+  Auth.currentUser().then(function(user) {
+    // User was logged in, or Devise returned
+    // previously authenticated session.
+    $scope.currentUser = user; // => {id: 1, ect: '...'}
+  }, function(error) {
+    // unauthenticated error
+    console.log('Not connected');
+  });
+
+  $scope.post = {};
+
+  $scope.sendData = function() {
+    var postAttrs = { post: {
+                          "title": $scope.post.title,
+                          "content": $scope.post.content,
+                          "user_id": $scope.currentUser.id
+                          }
+                    };
+
+    $http.post('/api/v1/posts', postAttrs).then(function(response){
+      alert('Post creado');
+
+      $location.path('/');
+    });
+  };
+
+}]);
