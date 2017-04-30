@@ -3,15 +3,21 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_scope :user do
+    authenticated :user do
+      root 'frontend#show', as: :authenticated
 
-  root 'frontend#show'
-
-  namespace :api do
-    namespace :v1 do
-      resources :users
-      resources :posts
+      namespace :api do
+        namespace :v1 do
+          resources :users
+          resources :posts
+        end
+      end
+      match "*path", to: "frontend#show", via: :all
     end
   end
 
-  match "*path", to: "frontend#show", via: :all
+  unauthenticated :user do
+    root to: 'devise/sessions#new'
+  end
 end

@@ -11,18 +11,24 @@ forum.controller('newPostCtrl', ['$scope', '$http', 'Auth', '$location', functio
   $scope.post = {};
 
   $scope.sendData = function() {
-    var postAttrs = { post: {
-                          "title": $scope.post.title,
-                          "content": $scope.post.content,
-                          "user_id": $scope.currentUser.id
-                          }
-                    };
+    if($scope.currentUser != null) {
+      var postAttrs = { post: {
+                            "title": $scope.post.title,
+                            "content": $scope.post.content,
+                            "user_id": $scope.currentUser.id
+                            }
+                      };
 
-    $http.post('/api/v1/posts', postAttrs).then(function(response){
-      alert('Post creado');
+      $http.post('/api/v1/posts', postAttrs).then(function(response){
+        alert('Post creado');
 
-      $location.path('/');
-    });
+        $location.path('/');
+      });
+    } else {
+      alert("No ha iniciado sesión. Redireccionando.");
+
+      $location.path('/users/sign_in');
+    }
   };
 
 }]);

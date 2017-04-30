@@ -1,17 +1,15 @@
+<h2>Nuevo Post</h2>
+
 <div class="">
-  <h2>Nuevo Post</h2>
+  <div class="">
+    <label for="">Título</label>
+    <input type="text" name="" value="" ng-model="post.title"></input>
+  </div>
 
   <div class="">
-    <div class="">
-      <label for="">Título</label>
-      <input type="text" name="" value="" ng-model="post.title"></input>
-    </div>
-
-    <div class="">
-      <label for="">Contenido</label>
-      <textarea ng-model="post.content"></textarea>
-    </div>
-
-    <button class="" type="button" name="button" ng-click="sendData()">CREAR POST</button>
+    <label for="">Contenido</label>
+    <textarea ng-model="post.content"></textarea>
   </div>
+
+  <button class="" type="button" name="button" ng-click="sendData()">CREAR POST</button>
 </div>
