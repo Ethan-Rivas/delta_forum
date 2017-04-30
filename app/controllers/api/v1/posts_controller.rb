@@ -5,10 +5,27 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.save
+    @post = Post.create(post_params)
 
     render json: @post
+  end
+
+  def show
+    @post = Post.find(params[:id])
+
+    render json: @post
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+
+    render json: @post
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy!
   end
 
   private
