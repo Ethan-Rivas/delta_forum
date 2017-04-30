@@ -1,17 +1,7 @@
 <div class="">
-  <h2>Editar Post</h2>
-
-  <div class="">
-    <div class="">
-      <label for="">Título</label>
-      <input type="text" name="" value="" ng-model="post.title"></input>
-    </div>
-
-    <div class="">
-      <label for="">Contenido</label>
-      <textarea ng-model="post.content"></textarea>
-    </div>
-
-    <button class="" type="button" name="button" ng-click="sendData()">EDITAR POST</button>
-  </div>
+  <owner allowed="/assets/angular-app/templates/posts/allowed_post_edition.html.hbs"
+         denied="/assets/angular-app/templates/posts/not_allowed_post_edition.html.hbs"
+         user="{{currentUser.id}}"
+         post="{{post.user_id}}">
+         </owner>
 </div>
