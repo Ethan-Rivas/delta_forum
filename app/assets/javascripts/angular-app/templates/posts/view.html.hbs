@@ -1,0 +1,20 @@
+<div class="">
+  <h2>Ver Post: {{post.title}} | {{post.created_at | date : 'EEEE, MMMM d, y'}}</h2>
+
+  <div class="">
+    <div>
+      Contenido: {{post.content}}
+    </div>
+    <div>
+      Última edición: {{post.updated_at | date : 'EEEE, MMMM d, y | h:mm:ss a' }}
+      <div class="post-holder"  ng-show="post.user_id == currentUser.id">
+        <div class="post-holder">
+          | <a ng-href="/post/{{post.id}}/edit">Editar</a>
+        </div>
+        <div class="post-holder">
+          | <button type="button" name="button" ng-click="deletePost()">Borrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
