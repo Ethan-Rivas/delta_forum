@@ -17,15 +17,17 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.update(post_params)
 
     render json: @post
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy!
+
+    redirect_to '/posts'
   end
 
   private
