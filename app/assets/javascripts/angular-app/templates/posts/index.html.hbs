@@ -1,0 +1,23 @@
+<div class="">
+  <div>
+    <h2>{{name}}</h2>
+
+    <a href="/post/new">Nuevo Post</a>
+
+    <div class="" ng-repeat="post in posts">
+      <div class="post-holder">
+        <div>Título: {{post.title}}</div>
+        <div>Contenido: {{post.content}}</div>
+      </div>
+      <div class="post-holder">
+        <div class="post-holder">
+          <a ng-href="/post/{{post.id}}/view">Ver</a>
+        </div>
+        <div class="post-holder" ng-show="post.user_id == currentUser.id">
+          | <a ng-href="/post/{{post.id}}/edit">Editar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
