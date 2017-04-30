@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       resources :posts
     end
   end
+
+  match "*path", to: "frontend#show", via: :all
 end
