@@ -1,4 +1,6 @@
-<h2>Ver Post: {{post.title}} | {{post.created_at | date : 'EEEE, MMMM d, y'}}</h2>
+<a href="/">Posts</a>
+
+<h2>{{post.title}} | {{post.created_at | date : 'EEEE, MMMM d, y'}}</h2>
 
 <div class="">
   <div>
@@ -14,5 +16,49 @@
         | <button type="button" name="button" ng-click="deletePost()">Borrar</button>
       </div>
     </div>
+  </div>
+</div>
+
+<hr>
+
+<h2>Comentarios</h2>
+
+<div class="" ng-repeat="comment in post.comments">
+  <div class="">
+    <div class="post-holder" ng-hide="showme">
+      <div class="">
+        {{comment.user_id}}: {{comment.content}}
+      </div>
+      <div class="">
+        Última edición: {{comment.updated_at | date : 'EEEE, MMMM d, y | h:mm:ss a' }}
+      </div>
+    </div>
+    <div class="post-holder" ng-show="showme">
+      <textarea name="name" ng-model="comment.content"></textarea>
+      <button type="button" name="button" ng-click="editComment(currentUser, post, comment)">Editar Comentario</button>
+      {{comment.content}}
+    </div>
+    <div class="post-holder"  ng-show="comment.user_id == currentUser.id">
+      <div class="post-holder">
+        | <a href="" ng-click="showme=true" ng-hide="showme">Editar</a>
+          <a href="" ng-click="showme=false" ng-show="showme">Cancelar</a>
+      </div>
+      <div class="post-holder">
+        | <button type="button" name="button" ng-click="deleteComment(comment)" ng-hide="showme">Borrar</button>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+</div>
+
+<div class="">
+  <div class="">
+    {{currentUser.email}}
+  </div>
+
+  <div class="">
+    <textarea name="name" ng-model="comment.content"></textarea>
+    <button type="button" name="button" ng-click="sendComment(currentUser, post)">Enviar Comentario</button>
   </div>
 </div>
