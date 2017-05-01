@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       namespace :api do
         namespace :v1 do
           resources :users
-          resources :posts
+          resources :posts do
+            resources :comments
+          end
         end
       end
       match "*path", to: "frontend#show", via: :all
