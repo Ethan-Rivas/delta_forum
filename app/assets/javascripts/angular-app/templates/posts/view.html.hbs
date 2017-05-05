@@ -1,99 +1,124 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="options-bar">
-      <div class="pull-right">
-        <a href="/">
-          <button class="btn btn-primary align-btn" type="button" name="button">Posts</button>
-        </a>
-        <a href="/post/new">
-          <button class="btn btn-primary align-btn" type="button" name="button">Nuevo Post</button>
-        </a>
-        <button class="btn btn-danger align-btn" type="button" name="button">Desconectarse</button>
-      </div>
-    </div>
+<div class="options-bar">
+  <div class="pull-right">
+    <a href="/">
+      <button class="btn btn-primary align-btn" type="button" name="button">Posts</button>
+    </a>
+    <a href="/post/new">
+      <button class="btn btn-primary align-btn" type="button" name="button">Nuevo Post</button>
+    </a>
+    <button class="btn btn-primary align-btn" type="button" name="button">Perfil</button>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-11 col-md-6">
+<div class="">
+  <div class="post-holder ml-10">
     <span class="head-title">{{post.title}}</span>
   </div>
 
-  <div class="col-xs-1 col-md-6" ng-show="post.user_id == currentUser.id">
-    <div class="dropdown pull-right">
+  <div class="post-holder pull-right" ng-show="post.user_id == currentUser.id">
+    <div class="dropdown mr-10">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
       <span class="caret"></span></button>
         <ul class="dropdown-menu" style="min-width:0; left:-60px;">
           <li>
-            <a class="" ng-href="/post/{{post.id}}/edit">
-              <button type="button" name="button">Editar</button></a>
+            <a class="" ng-href="/post/{{post.id}}/edit">Editar</a>
           </li>
-          <li><button class="" type="button" name="button" ng-click="deletePost()">Borrar</button></li>
+          <li>
+            <a href="" class="" ng-click="deletePost()">Borrar</a>
+          </li>
         </ul>
-      </div>
     </div>
   </div>
 </div>
 
-<div class="">
+<div class="ml-10">
   Por {{post.user.email}} | {{post.created_at | date : 'EEEE, MMMM d, y'}}
 </div>
 
-<div class="">
-  <div>
-    Contenido: {{post.content}}
-  </div>
-  <div>
-    Última edición: {{post.updated_at | date : 'MMMM d, y | h:mm a' }}
+<div class="" style="margin-top: 10px; margin-bottom: 10px;">
+  <div class="" style="background-color: #fcefd5;
+                       min-height: 30px;
+                       padding-bottom: 30px;">
+    <div class="mr-10 ml-10 comments-content">
+     {{post.content}}
+    </div>
+    <div class="mr-10 ml-10 pull-right">
+      Última edición: {{post.updated_at | date : 'MMMM d, y | h:mm a' }}
+    </div>
   </div>
 </div>
 
-<hr>
-
-<span class="head-title">Comentarios</span>
+<span class="head-title ml-10">Comentarios</span>
 
 <div class="" ng-repeat="comment in post.comments">
-  <div class="row">
-    <div class="col-xs-11 col-md-6">
-      <div class="" ng-hide="showme">
-        <div class="">
-          {{comment.user.email}}: {{comment.content}}
+  <div class="comments-header">
+    <div class="post-holder">
+      <div class="post-holder ml-10">
+        <div class="user-image-comment">
+
         </div>
       </div>
-      <div class="" ng-show="showme">
-        <textarea class="comment-area" name="name" ng-model="comment.content"></textarea>
-        <button class="pull-right" type="button" name="button" ng-click="editComment(currentUser, post, comment)">Editar Comentario</button>
-      </div>
-      <div class="" ng-hide="showme">
-        Última edición: {{comment.updated_at | date : 'MMMM d, y | h:mm a' }}
+
+      <div class="post-holder">
+        <div class="">
+          Por: {{comment.user.email}}
+        </div>
+        <div class="">
+          {{comment.user.email}}
+        </div>
+        <div class="">
+          {{comment.created_at | date : 'MMMM d, y | h:mm a'}}
+        </div>
       </div>
     </div>
 
-    <div class="col-xs-1 col-md-6" ng-show="comment.user_id == currentUser.id">
-      <div class="dropdown pull-right">
+    <div class="post-holder pull-right mr-10">
+      <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
         <span class="caret"></span></button>
         <ul class="dropdown-menu" style="min-width:0; left:-43px;">
           <li>
-            <a href="" ng-click="showme=true" ng-hide="showme">Editar</a>
-            <a href="" ng-click="showme=false" ng-show="showme">Cancelar</a>
+            <a href="">Citar</a>
           </li>
-          <li><button type="button" name="button" ng-click="deleteComment(comment)" ng-hide="showme">Borrar</button></li>
+          <li ng-show="comment.user_id == currentUser.id">
+            <a href="" ng-click="showme=true" ng-hide="showme">Editar</a>
+          </li>
+          <li ng-show="comment.user_id == currentUser.id">
+            <a href="" ng-click="deleteComment(comment)" ng-hide="showme">Borrar</a>
+          </li>
         </ul>
       </div>
     </div>
   </div>
 
-  <hr>
+  <div class="ml-10">
+    <div class="comments-content" ng-hide="showme">
+        <div class="">
+          {{comment.content}}
+        </div>
+    </div>
+    <div class="comments-content" ng-show="showme">
+      <textarea class="content-area" name="name" ng-model="comment.content" style="height: 100%;"></textarea>
+      <button class="btn pull-right mr-10 btn-danger" ng-click="showme=false" ng-show="showme" style="margin-top: 5px;">Cancelar</button>
+      <button class="btn pull-right mr-10" type="button" name="button" ng-click="editComment(currentUser, post, comment)" style="margin-top: 5px;">Editar Comentario</button>
+    </div>
+    <div class="pull-right mr-10">
+      Última edición: {{comment.updated_at | date : 'MMMM d, y | h:mm a' }}
+    </div>
+    <div class="" style="height: 30px;">
+
+    </div>
+  </div>
+
 </div>
 
 <div class="">
-  <div class="">
+  <div class="ml-10">
     Envíar como: {{currentUser.email}}
   </div>
 
-  <div class="">
-    <textarea class="comment-area" name="name" ng-model="comment.content"></textarea>
-    <button class="pull-right" type="button" name="button" ng-click="sendComment(currentUser, post)">Enviar Comentario</button>
+  <div class="ml-10 mr-10">
+    <textarea class="content-area" name="name" ng-model="comment.content"></textarea>
+    <button class="btn pull-right" type="button" name="button" ng-click="sendComment(currentUser, post)" style="margin-top: 10px; margin-bottom: 10px;">Enviar Comentario</button>
   </div>
 </div>

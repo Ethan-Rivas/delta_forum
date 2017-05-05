@@ -1,23 +1,25 @@
 <div class="options-bar">
   <div class="pull-right">
+    <button class="btn btn-primary align-btn" type="button" name="button">Perfil</button>
   </div>
 </div>
 
-<div class="">
-  <span class="head-title">Nuevo Post</span>
+<div class="ml-10 mr-10">
+    <div class="">
+      <div class="">
+        <span class="head-title">Nuevo Post</span>
+      </div>
+      <label for="">Título</label>
+      <input class="content-area" type="text" name="" value="" ng-model="post.title"></input>
 
-  <div class="">
-    <label for="">Título</label>
-    <input type="text" name="" value="" ng-model="post.title"></input>
-  </div>
+      <label for="">Contenido</label>
+      <textarea class="content-area" ng-model="post.content"></textarea>
+    </div>
 
-  <div class="">
-    <label for="">Contenido</label>
-    <textarea ng-model="post.content"></textarea>
-  </div>
-
-  <button class="btn btn-primary" type="button" name="button" ng-click="sendData()">CREAR POST</button>
-  <a href="/">
-    <button class="btn btn-danger" type="button" name="button">CANCELAR</button>
-  </a>
+    <div class="pull-right" style="margin-top: 10px;">
+      <button class="btn btn-primary" type="button" name="button" ng-click="sendData()">CREAR POST</button>
+      <a href="/">
+        <button class="btn btn-danger" type="button" name="button">CANCELAR</button>
+      </a>
+    </div>
 </div>
