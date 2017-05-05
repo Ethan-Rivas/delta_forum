@@ -1,5 +1,11 @@
 <div class="" ng-controller="editPostCtrl">
-  <a href="/">Cancelar</a>
+  <div class="options-bar">
+    <div class="pull-right">
+      <a ng-href="/">
+        <button class="btn btn-primary align-btn" type="button" name="button">Posts</button>
+      </a>
+    </div>
+  </div>
 
   <h2>Editar Post</h2>
 
@@ -14,6 +20,9 @@
       <textarea ng-model="post.content"></textarea>
     </div>
 
-    <button class="" type="button" name="button" ng-click="sendData()">EDITAR POST</button>
+    <button class="btn btn-primary" type="button" name="button" ng-click="sendData()">EDITAR POST</button>
+    <a href="/post/{{post.id}}/view">
+      <button class="btn btn-danger" type="button" name="button">CANCELAR</button>
+    </a>
   </div>
 </div>

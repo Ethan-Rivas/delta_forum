@@ -1,7 +1,7 @@
 class Api::V1::CommentsController < ApplicationController
   def index
     @comments = Comment.all
-    render json: @comments
+    render json: @comments, include: :user
   end
 
   def create
@@ -13,7 +13,7 @@ class Api::V1::CommentsController < ApplicationController
   def show
     @comment = Comment.find(params[:id])
 
-    render json: @comment
+    render json: @comment, include: :user
   end
 
   def update

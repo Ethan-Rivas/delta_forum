@@ -1,7 +1,7 @@
 class Api::V1::PostsController < ApplicationController
   def index
     @posts = Post.all
-    render json: @posts, :methods => :comments
+    render json: @posts, include: [:user, comments: { include: :user } ]
   end
 
   def create
@@ -13,7 +13,7 @@ class Api::V1::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
 
-    render json: @post, :methods => :comments
+    render json: @post, include: [:user, comments: { include: :user } ]
   end
 
   def update

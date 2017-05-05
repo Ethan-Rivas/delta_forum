@@ -14,5 +14,7 @@
 //= require angular-route/angular-route.min
 //= require angular-route-segment/build/angular-route-segment
 //= require angular-app/application
+//= require jquery/jquery.min
+//= require bootstrap/dist/js/bootstrap.min
 //= require AngularDevise/lib/devise-min.js
 //= require_tree .

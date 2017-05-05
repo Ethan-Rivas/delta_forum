@@ -1,8 +1,11 @@
-<a href="/posts">Cancelar</a>
-
-<h2>Nuevo Post</h2>
+<div class="options-bar">
+  <div class="pull-right">
+  </div>
+</div>
 
 <div class="">
+  <span class="head-title">Nuevo Post</span>
+
   <div class="">
     <label for="">Título</label>
     <input type="text" name="" value="" ng-model="post.title"></input>
@@ -13,5 +16,8 @@
     <textarea ng-model="post.content"></textarea>
   </div>
 
-  <button class="" type="button" name="button" ng-click="sendData()">CREAR POST</button>
+  <button class="btn btn-primary" type="button" name="button" ng-click="sendData()">CREAR POST</button>
+  <a href="/">
+    <button class="btn btn-danger" type="button" name="button">CANCELAR</button>
+  </a>
 </div>

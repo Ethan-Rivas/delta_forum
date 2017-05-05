@@ -1,9 +1,17 @@
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-  </li>
-<% end %>
+<div class="container" ng-app="deltaForum">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="post-holder">
+        <a class="page-name" href="/">
+          <h2>Delta Forum</h2>
+        </a>
+      </div>
 
-<div ng-app="deltaForum">
+      <div class="post-holder pull-right">
+        <%= button_to destroy_user_session_path, class: 'btn btn-danger align-top', method: :delete do %>Logout<% end %>
+      </div>
+    </div>
+  </div>
+
   <div ng-view></div>
 </div>
