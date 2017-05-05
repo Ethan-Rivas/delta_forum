@@ -1,15 +1,13 @@
-<div class="container" ng-app="deltaForum">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="post-holder">
-        <a class="page-name" href="/">
-          <h2>Delta Forum</h2>
-        </a>
-      </div>
+<div class="container-fluid" ng-app="deltaForum">
+  <div class="">
+    <div class="post-holder ml-10">
+      <a class="page-name" href="/">
+        <h2>Delta Forum</h2>
+      </a>
+    </div>
 
-      <div class="post-holder pull-right">
-        <%= button_to destroy_user_session_path, class: 'btn btn-danger align-top', method: :delete do %>Logout<% end %>
-      </div>
+    <div class="post-holder pull-right mr-10">
+      <%= button_to destroy_user_session_path, class: 'btn btn-danger align-top', method: :delete do %>Logout<% end %>
     </div>
   </div>
 
